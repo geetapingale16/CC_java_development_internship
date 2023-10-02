@@ -1,0 +1,78 @@
+TimeZone.getTimeZone(timeZone);
+  sdfAmerica.setTimeZone(tzInAmerica);
+  String sDateInAmerica = sdfAmerica.format(date);
+  Date dateInAmerica = null;
+  try {
+  dateInAmerica = formatter.parse(sDateInAmerica);
+  } catch (ParseException e) {
+  e.printStackTrace();
+  }
+  time_result.setText(formatter.format(dateInAmerica)+"");
+  }
+ 
+  private String getSelectTimeZone(String selectTimeZone) {
+  switch (selectTimeZone) {
+  case "india":
+  return "Asia/Kolkata";
+  case "nepal":
+  return "Asia/Kathmandu";
+  case "america":
+  return "America/New_York";
+  case "pakistan":
+  return "Asia/Karachi";
+  case "srilanka":
+  return "Asia/Colombo";
+  case "australia":
+  return "Europe/Vienna";
+  case "china":
+  return "Asia/Shanghai";
+  case "russian":
+  return "Europe/Moscow";
+  case "japan":
+  return "Asia/Tokyo";
+  case "france":
+  return "Europe/Paris";
+  case "bangladesh":
+  return "Asia/Dhaka";
+  case "iraq":
+  return "Asia/Baghdad";
+  case "united kingdom":
+  return "Europe/London";
+  case "Hong Kong":
+  return "Asia/Hong_Kong";
+  default:
+  break;
+  }
+  return "Asia/Kolkata";
+  }
+ }
+
+Main.java
+package application;
+ 
+ import javafx.application.Application;
+ import javafx.fxml.FXMLLoader;
+ import javafx.stage.Stage;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+ import javafx.scene.layout.BorderPane;
+ 
+ 
+ public class Main extends Application {
+  @Override
+  public void start(Stage primaryStage) {
+  try {
+  Parent root =FXMLLoader.load(getClass().getResource("/application/Time.fxml"));
+  Scene scene = new Scene(root);
+  scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+  primaryStage.setScene(scene);
+  primaryStage.show();
+  } catch(Exception e) {
+  e.printStackTrace();
+  }
+  }
+ 
+  public static void main(String[] args) {
+  launch(args);
+  }
+ }
